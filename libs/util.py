@@ -3,7 +3,6 @@ import os
 import numpy as np
 from PIL import Image
 from scipy.misc import imresize
-import matplotlib.pyplot as plt
 
 
 class DataLoader():
