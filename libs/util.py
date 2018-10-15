@@ -122,8 +122,8 @@ def plot_test_images(model, loader, test_images, test_output, epoch):
 
         # Plot the images. Note: rescaling and using squeeze since we are getting batches of size 1                    
         fig, axes = plt.subplots(1, 1, figsize=(19, 10))
-        axes[0].imshow(0.5 * img_sr + 0.5)
-        axes[i].axis('off')
+        axes.imshow(0.5 * img_sr + 0.5)
+        axes.axis('off')
         # for i, (title, img) in enumerate(images.items()):
         #     axes[i].imshow(0.5 * img + 0.5)
         #     axes[i].set_title(title)
