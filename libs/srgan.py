@@ -325,17 +325,20 @@ if __name__ == '__main__':
 
     # Train the SRGAN
     gan.train(
-        epochs=100000,
-        dataname='imagenet',
-        datapath='../data/imagenet/train/',
+        epochs=2,
+        dataname='pics',
+        datapath='../pics/',
         batch_size=16,
         test_images=[
-            '../data/buket.jpg'
-            
+            '../pics/dcgan-0.jpg',
+            '../pics/dcgan-8.jpg',
+            '../pics/dcgan-59.jpg',
+            '../pics/dcgan-154.jpg',
+            '../pics/dcgan-258.jpg',            
         ],        
-        test_frequency=1000,
-        test_path='../images/samples/',
+        test_frequency=1,
+        test_path='../images/',
         weight_path='../data/weights/',
         weight_frequency=1000,
-        print_frequency=10,
+        print_frequency=1,
     )

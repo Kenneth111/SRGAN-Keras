@@ -1,6 +1,7 @@
 import os
-import imageio
+# import imageio
 import numpy as np
+from PIL import Image
 from scipy.misc import imresize
 import matplotlib.pyplot as plt
 
@@ -51,8 +52,8 @@ class DataLoader():
         for img_path in img_paths:            
 
             # Load image
-            img = imageio.imread(img_path).astype(np.float)            
-
+            # img = imageio.imread(img_path).astype(np.float)            
+            img = np.array(Image.open(img_path)).astype(np.float)
             # If gray-scale, convert to RGB
             if len(img.shape) == 2:
                 img = np.stack((img,)*3, -1)
@@ -120,12 +121,14 @@ def plot_test_images(model, loader, test_images, test_output, epoch):
         }
 
         # Plot the images. Note: rescaling and using squeeze since we are getting batches of size 1                    
-        fig, axes = plt.subplots(1, 3, figsize=(15, 5))
-        for i, (title, img) in enumerate(images.items()):
-            axes[i].imshow(0.5 * img + 0.5)
-            axes[i].set_title(title)
-            axes[i].axis('off')
-        plt.suptitle('{} - Epoch: {}'.format(filename, epoch))
+        fig, axes = plt.subplots(1, 1, figsize=(19, 10))
+        axes[0].imshow(0.5 * img_sr + 0.5)
+        axes[i].axis('off')
+        # for i, (title, img) in enumerate(images.items()):
+        #     axes[i].imshow(0.5 * img + 0.5)
+        #     axes[i].set_title(title)
+        #     axes[i].axis('off')
+        # plt.suptitle('{} - Epoch: {}'.format(filename, epoch))
 
         # Save directory                    
         savefile = os.path.join(test_output, "{}-Epoch{}.png".format(filename, epoch))
