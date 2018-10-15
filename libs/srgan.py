@@ -325,7 +325,7 @@ if __name__ == '__main__':
 
     # Train the SRGAN
     gan.train(
-        epochs=2,
+        epochs=200,
         dataname='pics',
         datapath='../pics/',
         batch_size=16,
@@ -336,9 +336,9 @@ if __name__ == '__main__':
             '../pics/dcgan-154.jpg',
             '../pics/dcgan-258.jpg',            
         ],        
-        test_frequency=1,
+        test_frequency=10,
         test_path='../images/',
-        weight_path='../data/weights/',
-        weight_frequency=1000,
-        print_frequency=1,
+        weight_path='../data/',
+        weight_frequency=10,
+        print_frequency=10,
     )
