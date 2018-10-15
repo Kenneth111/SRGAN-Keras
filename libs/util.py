@@ -121,9 +121,9 @@ def plot_test_images(model, loader, test_images, test_output, epoch):
         }
 
         # Plot the images. Note: rescaling and using squeeze since we are getting batches of size 1                    
-        fig, axes = plt.subplots(1, 1, figsize=(19, 10))
-        axes.imshow(0.5 * img_sr + 0.5)
-        axes.axis('off')
+        # fig, axes = plt.subplots(1, 1, figsize=(19, 10))
+        # axes.imshow(0.5 * img_sr + 0.5)
+        # axes.axis('off')
         # for i, (title, img) in enumerate(images.items()):
         #     axes[i].imshow(0.5 * img + 0.5)
         #     axes[i].set_title(title)
@@ -132,5 +132,7 @@ def plot_test_images(model, loader, test_images, test_output, epoch):
 
         # Save directory                    
         savefile = os.path.join(test_output, "{}-Epoch{}.png".format(filename, epoch))
-        fig.savefig(savefile)
-        plt.close()
+        tmp_img = Image.fromarray(np.uint8((img_sr + 1) * 127.5))
+        tmp_img.save(savefile)
+        # fig.savefig(savefile)
+        # plt.close()
